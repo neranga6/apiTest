@@ -1,0 +1,71 @@
+#letterBorder {
+    border: 1px solid #C0C0C0;
+    float: left;
+    padding-bottom: 200px;
+    position: relative;
+    width: 50%;
+}
+
+
+
+#topSection {
+    float: left;
+    position: relative;
+    width: 100%;
+  
+}
+
+
+td {
+    border: 1px solid #CCCCCC;
+    vertical-align: text-top;
+    width: 45%;
+     
+}
+
+.bodycentered {
+    float: left;
+    padding: 10px 70px 0 40px;
+    position: relative;
+    width: 705px;
+}
+
+.centerArea {
+    float: left;
+    padding: 10px 10px 0 68px;
+    position: relative;
+    width: 221px;
+}
+
+
+.bodyWithLeftNav{
+    float: left;
+    padding: 10px 20px 0 45px;
+    position: relative;
+    width: 500px;
+    
+  
+}
+
+
+td.noLine{
+	 border: none;
+	 vertical-align: top;
+	 
+}
+
+.leftNav{
+	 width: 221px;
+	  padding: 10px 0 0 0;
+}
+
+.couponTearOff {
+	
+    bottom: 0;
+    clear: both;
+    position: absolute;
+    width: 960px;
+}
+
+
+

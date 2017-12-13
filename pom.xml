@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.nationwide.edm.authoring</groupId>
+		<artifactId>writers-tool-build</artifactId>
+		<version>0.0.8</version>
+		<relativePath>../writers-tool-build</relativePath>
+	</parent>
+
+	<groupId>com.nationwide.edm.authoring</groupId>
+	<artifactId>writers-tool-web</artifactId>
+	<packaging>grails-app</packaging>
+
+	<name>OYS Writers Tool Web</name>
+	<description>A web application used to author customer communications</description>
+	<url>http://www.nationwide.com</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.grails</groupId>
+			<artifactId>grails-dependencies</artifactId>
+			<version>${grails.version}</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-grails-support</artifactId>
+			<version>${spock.grails.support.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails</groupId>
+			<artifactId>grails-plugin-testing</artifactId>
+			<version>${grails.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>resources</artifactId>
+			<version>${resources.plugin.version}</version>
+			<scope>runtime</scope>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>${grails.version}</version>
+			<scope>runtime</scope>
+			<type>zip</type>
+		</dependency>
+
+		<!-- Uncomment once we are ready to use a database server -->
+		<!-- 
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>database-migration</artifactId>
+			<version>${dbmigration.plugin.version}</version>
+			<scope>runtime</scope>
+			<type>zip</type>
+		</dependency>
+		 -->
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+			<scope>runtime</scope>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>spock</artifactId>
+			<version>${spock.plugin.version}</version>
+			<type>zip</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>bootstrap-file-upload</artifactId>
+			<version>${bootstrap.plugin.version}</version>
+			<scope>runtime</scope>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>twitter-bootstrap</artifactId>
+			<version>${twitter-bootstrap.plugin.version}</version>
+			<type>zip</type>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.grails.plugins</groupId>
+					<artifactId>svn</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>jquery-ui</artifactId>
+			<version>${jquery-ui.plugin.version}</version>
+			<scope>runtime</scope>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.grails.plugins</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>1.2.7.3</version>
+			<type>zip</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nationwide.security</groupId>
+			<artifactId>spring-security-preauth-cleartrust</artifactId>
+			<version>3.0.7</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<pluginManagement />
+
+		<plugins>
+			<!-- Disables the Maven surefire plugin for Grails applications, as we 
+				have our own test runner -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>surefire-it</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>plugins</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.grails</groupId>
+				<artifactId>grails-maven-plugin</artifactId>
+				<version>${grails.version}</version>
+				<configuration>
+					<!-- Whether for Fork a JVM to run Grails commands -->
+					<fork>false</fork>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${sourceComplianceLevel}</source>
+					<target>${sourceComplianceLevel}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jsSrcDir>${project.basedir}/web-app/js</jsSrcDir>
+					<jsTestSrcDir>${project.basedir}/test/javascript</jsTestSrcDir>
+					<browserVersion>INTERNET_EXPLORER_8</browserVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

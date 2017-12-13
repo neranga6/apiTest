@@ -1,0 +1,38 @@
+.richTextPanel {
+	float: left;
+	width: 60%;
+}
+
+.commentBusinessRulePanel {
+	float: right;
+	width: 40%;
+}
+
+/* clearfix */
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1;  /* IE6 and 7 */
+}
+
+.commentRuleFormat {
+	
+	color: #666666;
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+  
+}
+
+#imageUploadPanel {
+	position: absolute;
+	left: 15px; 
+	top: 800px;
+}

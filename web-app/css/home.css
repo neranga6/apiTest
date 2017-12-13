@@ -1,0 +1,82 @@
+.mainPage {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+.greyTable {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	table-layout: fixed;
+	background-color: #e0e0e0;
+}
+
+h2 {
+	text-align: center;
+	font-size: 150%;
+}
+
+td {
+	vertical-align: top;
+}
+
+.alternateTextColor,.alternateTextColor * {
+	color: #fff;
+}
+
+.mainPageColumnLeft {
+	background-color: #ff9966;
+	padding: 15px;
+}
+
+.mainPageColumnMiddle {
+	background-color: #999966;
+	padding: 15px;
+}
+
+.mainPageColumnRight {
+	background-color: #66ccff;
+	padding: 15px;
+}
+
+.col1 {
+	padding: 20px;
+	min-height: 325px;
+	height: auto !important;
+	height: 300px;
+}
+
+.colHeader1 {
+	background-color: #EA7021;
+	border-bottom: 1px solid #CCCCCC;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 42px;
+	margin-bottom: 5px;
+}
+
+.colHeader2 {
+	background-color: #4F7019;
+	border-bottom: 1px solid #CCCCCC;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 42px;
+	margin-bottom: 5px;
+}
+
+.colHeader3 {
+	background-color: #0495D3;
+	border-bottom: 1px solid #CCCCCC;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 42px;
+	margin-bottom: 5px;
+}
+
+p.radioButton {
+	display:inline;
+	position:relative;
+	margin-left: 0.2em;
+	_top:0.2em;
+}

@@ -1,0 +1,74 @@
+Here are instructions on how to setup your local environment from scratch, in order to work on the OYS Writers Tool web application.
+
+h2. Setup workspace for local development
+
+h3. Get the Grails framework, Java Development Kit, and Maven build tool
+# Download "Grails v2.1.0":http://grails.org/Download and extract it to any location, such as C:\\\apps\\\grails
+# Download and install the "Oracle HotSpot 1.6 JDK":http://www.oracle.com/technetwork/java/javase/downloads/index.html (revision 18 & 30 are confirmed to work)
+# Download "Maven 2.0.11":https://maven.apache.org/download.html and extract it to any location, such as c:\\\apps\\\maven
+
+{warning}
+Please be careful to download the exact version specified, because otherwise it can lead to unexpected problems.  For instance, the webapp does NOT currently compile using the IBM J9 1.5 JDK.
+{warning}
+
+h3. Setup environment variables
+
+# Right click My Computer, then click Properties, Advanced tab, & the Environment Variables button
+# In the System Variables window, click New
+# Variable Name: **GRAILS_HOME**
+# Variable Value: Location of the extracted Grails archive
+# Also, add the following to your existing PATH environment variable, which will allow you to run grails commands from the command line: %GRAILS_HOME%\\\bin
+# Repeat the above steps, this time adding **JAVA_HOME** and pointing it at your JDK, and adding to PATH so it has an entry for %JAVA_HOME%\\\bin
+# Repeat the above steps, this time adding **MAVEN_HOME** and pointing it at the location where you extracted Maven, and adding to PATH so it has an entry for %MAVEN_HOME%\\\bin
+# To build with Maven, you will need to create a variable **MAVEN_OPTS** and set it to {code}-Xmx512m -XX:MaxPermSize=256m{code}
+
+h3. Install an IDE
+
+# Download "SpringSource Tool Suite v2.9.2":http://www.springsource.com/products/springsource-tool-suite-download (since Rational Application Developer 8 does not support the Groovy or Grails plugins)   
+
+# Run the installer, which is a bundle of 3 pieces of software: SpringSource Tool Suite, vFabric tc Server, and Spring Roo.  (The latter two are not necessary, so you may decide to uncheck those items.)
+
+# After the installation is complete, boot up STS and choose your workspace, such as c:\\\devl\\\writers-tool-sts
+
+# Setup HTTP proxy so you can download plugins through the firewall
+## go to Window -> Preferences -> General -> Network Connections
+## Active Provider: Manual
+## select HTTP and click Edit, enter http-proxy.nwie.net port 8080
+## exclusions: \*.nwie.net,\*.nwielab.net,localhost,127.0.0.1
+## repeat the previous two steps for HTTPS
+
+# Get the Eclipse plug-in's for both Groovy and Grails
+## go to Help -> Dashboard
+## on the bottom, click the Extensions tab
+## under Language and Framework Tooling, check the Grails Support and Groovy Eclipse items
+## click Install at the bottom
+## Restart STS once it's finished
+
+# Get the Subclipse plugin
+## go to Help -> Install New Software -> Add
+## Enter URL: "http://subclipse.tigris.org/update_1.8.x":http://subclipse.tigris.org/update_1.8.x
+## You must install at least Subclipse, Subversion Client Adapter, & Subversion JavaHL Native Library Adapter (and the latter is actually required)
+## Restart the IDE when it prompts you after the install is complete.
+
+# Setup your STS workspace to point at your Grails install
+## Go to Window -> Preferences -> Groovy -> Grails -> Add
+## Browse to where you extracted Grails
+
+# Import the project into STS using Subclipse
+## In the SVN Repository Exploring perspective, add this repo, and checkout the 3 projects under this location: "https://svnprod.nwie.net/svn/EDM-WritersTool/trunk/writers-tool":https://svnprod.nwie.net/svn/EDM-WritersTool/trunk/writers-tool
+
+{note}
+The path given is the trunk, which is not a working location.  Please create a new branch for active development.
+{note}
+
+h3. Compile the app with Maven
+# Open a command-line window, change to the build directory, and run {code}mvn clean install{code}
+
+h3. Run the app
+Choose one of the following options, since they are effectively the same.
+# Run the web app by opening a command line window, changing to the web directory, and running {code}grails run-app{code}
+# Run the web app from inside STS. Right click the web project -> Run As -> Grails Command (run-app)
+
+h3. In STS, clear Errors list from the Problems window
+# right click on the Web project and do Grails Tools -> Refresh Dependencies
+# right click the writers-tool-ear project -> Close Project to clear the error "Target runtime WebSphere Application Server v8.0 is not defined."

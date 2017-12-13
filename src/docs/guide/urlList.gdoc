@@ -1,0 +1,9 @@
+h2. URLs
+
+Hudson (Lab): "http://ntac1lapvm0024.nwielab.net:8080/hudson/":http://ntac1lapvm0024.nwielab.net:8080/hudson/
+
+Websphere Admin Console (Lab): "https://ntac1lapvm0024.nwielab.net:9043/ibm/console/logon.jsp":https://ntac1lapvm0024.nwielab.net:9043/ibm/console/logon.jsp
+
+Writers Tool (Lab): "http://ntac1lapvm0024.nwielab.net:9080/writers-tool-web/":http://ntac1lapvm0024.nwielab.net:9080/writers-tool-web/
+
+Legacy .Net app: "http://10.5.138.35/":http://10.5.138.35/

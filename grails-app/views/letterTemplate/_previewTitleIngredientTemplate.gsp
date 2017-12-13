@@ -1,0 +1,1 @@
+${ingredientModule.module.content}

@@ -1,0 +1,74 @@
+.previewWrapper {
+    margin: 0 auto;
+    width: 820px;
+}
+
+.previewBody {
+    border: 1px solid #C0C0C0;
+    font-family: Arial;
+    font-size: 9.5pt;
+    height: 1000px;
+    position: relative;
+    width: 100%;
+}
+
+p {
+    margin: 0 !important;
+}
+
+td.previewLogoAndAddress {
+    padding: 60px 225px 0 65px;
+    vertical-align: top;
+    border-width: 0px;
+}
+
+.previewReference, .previewReference p td{
+    font-family: Arial;
+    font-size: 8.5pt !important;
+    border-width: 0px;
+}
+
+#previewReferenceTable{
+	border-width: 0px;
+}
+
+.previewLeftbar {
+    float: left;
+    padding: 0 40px 0 58px;
+    position: relative;
+    width: 181px;
+}
+
+.previewTitlebar h1 {
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+}
+
+.previewMainBody {
+    float: right;
+    font-family: Arial;
+    font-size: 9.5pt;
+    padding: 0 70px 0 0;
+    position: relative;
+    width: 466px;
+}
+
+.previewMainBodyCentered {
+    float: right;
+    font-family: Arial;
+    font-size: 9.5pt;
+    padding: 0 150px 0 70px;
+    position: relative;
+    width: 505px;
+}
+
+.previewCoupon {
+    bottom: 0;
+    position: absolute;
+    width: 820px;
+}
+
+#leftNavPreviewForm {
+	width: 100%;
+}

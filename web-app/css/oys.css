@@ -1,0 +1,153 @@
+body {
+	font-family: arial, helvetica, sans-serif;
+	font: .8em;
+}
+
+img {
+	border: 0;	
+}
+
+a {
+	color: #0000ff;
+	text-decoration: underline;
+}
+
+td {
+	border: 1px solid #cccccc;
+}
+
+.tabColor {
+	color: #ffffff !important;
+}
+
+a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+#txtSearchText {
+	padding: 2px 6px 4px 6px;
+	color: #555555;
+	background-color: #eeeeee;
+	border: #dddddd 2px solid height:20px;
+	font-size: 20px;
+}
+
+#ddlSearchType {
+	padding: 2px 6px 4px 6px;
+	color: #555555;
+	background-color: #eeeeee;
+	border: #dddddd 2px solid height:20px;
+	font-size: 20px;
+}
+
+.rightNWImage {
+	position: absolute;
+	right: 100px;
+	top: 90px;
+}
+
+.logout {
+	position: absolute;
+	top: 30;
+	right: 0;
+	width: 200px;
+}
+
+.footer {
+	color: #666666;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+.property-label {
+	font-weight: bold;
+}
+
+.tableData {
+	border:1px solid #686D74;
+}
+
+#reviewLetterTable {
+	width: 100%;
+}
+
+iframe {
+	border: 1px solid #cccccc;
+}
+
+#moduleSelectionTable {
+	width: 100%;
+}
+
+#recipeSelectionCell, #moduleSelectionCell {
+	width: 50%;
+}
+
+#recipeSelectionCell table tbody tr td, #moduleSelectionCell table tbody tr td {
+	border: 0px;
+}
+
+#recipeSelectionCell table, #moduleSelectionCell table {
+	width: 100%;
+}
+
+.moduleId {
+	padding-left: 0.5em;
+}
+
+.ingredientId {
+	display: none;
+}
+
+#sortable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#sortable li {
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 0.5em;
+	height: 22px;
+	white-space: nowrap;
+}
+
+.ui-state-highlight {
+	height: 1.5em;
+	line-height: 1.2em;
+}
+
+#sortable li:hover {
+    cursor: pointer;
+}
+
+#sortable li.ui-sortable-helper {
+    cursor: move;
+}
+
+.deleteIngredient, .addIngredient {
+	font-size: 0.70em !important;
+	margin-right: 10px;
+}
+
+#moduleList > tbody > tr {
+	border: 1px solid #cccccc;
+}
+
+/* For the Bootstrap File Uploader (jQuery-File-Upload), don't display the delete buttons. */
+.btn-danger.delete, td.delete {
+	display: none;
+}
+
+.step {
+	padding: 3px;
+}
+
+.errors {
+	color: red;
+	font-weight: bold;
+	font-size: 1.25em;
+}

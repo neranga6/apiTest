@@ -1,0 +1,58 @@
+.odd {
+	background: #FFFFFF;
+}
+
+.even {
+	background: #F7F6F3;
+}
+
+h3, #mainContent h4, #mainContent h5 {
+    max-width: 485px;
+}
+
+h2, h3 {
+    font-weight: 700;
+}
+
+th, td {
+    padding: 0 6px;
+}
+
+th, th span {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+th {
+    background-color: #686D74;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+tr, td, th {
+    height: 25px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+th {
+    border-left: 1px solid #686D74;
+    border-right: 1px solid #686D74;
+    border-top: 1px solid #FFFFFF;
+}
+
+fieldset {
+	border: 0;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+th.sortable a {
+	color: #ffffff;
+}
+
+th.sortable a:hover {
+	color: #ffffff;
+}

@@ -1,0 +1,85 @@
+h2. Setting up IBM Websphere 8
+
+h3. Memory
+The default Websphere 8 settings don't allocate enough memory for a Grails app, and when deploying the WAR using the Websphere Admin Console resulted in an OutOfMemoryError.  Here's how to fix that issue:
+
+## Open the admin console, under the Servers heading expand Server Types and click "WebSphere application servers" and click the server name
+## Expand "Java and Process Management" and click "Process definition" and then "Java Virtual Machine"
+## For "Maximum heap size" enter 1024.  Press the "OK" button and then the Save link.  Then restart your server.
+
+h3. Setup Logging
+## Servers -> expand the Server Types heading -> WebSphere application servers
+## In the content area of the page, click the server name, such as ntac1lapvm0024
+## Click Java and Process Management -> Process Definition -> Java Virtual Machine
+## On this screen, enter the paths you want to append to the end of the WebSphere classpath one line at a time in the Classpath field (you do not need to delimit with semicolons).
+## Classpath: /home/wasadmin/classpath (enter the path to the log4j.properties file)
+## Click OK
+## Save changes
+## Run this command to restart the Websphere service on linux, which is necessary for new CLASSPATH to be recognized.  {code}sudo /etc/init.d/websphere80 restart{code}
+
+h3. Setup Database
+# Setup username and password for the development database
+## Security -> Global Security
+## Java Authentication and Authorization Service -> J2C authentication data
+## Click the New button
+##* Alias: WritersToolCredentials
+##* User ID: WritXmen
+##* Password: R3dSun1
+## Click Finish
+## Save changes
+
+# Setup database connection settings (JNDI)
+## Resources -> JDBC -> Data sources
+## Change Scope to: Cell=...
+## Click New button
+##* Data Source Name: Writers Tool DataSource
+##* JNDI name: jdbc/writersTool
+## Click Next
+## Select "Create new JDBC provider" radio
+## Click Next
+##* Database type: Oracle
+##* Provider type: Oracle JDBC Driver
+##* Implementation type: Connection pool data source
+##* Name: (filled in automatically)
+##* Description: (filled in automatically)
+## Click Next
+
+# Enter database classpath information...
+## Class path: (filled in automatically with "${ORACLE_JDBC_DRIVER_PATH}/ojdbc6.jar")
+## Directory location for "ojdbc6.jar" which is saved as WebSphere variable ${ORACLE_JDBC_DRIVER_PATH}: /home/wasadmin/drivers (note: this directory is setup in the next section)
+## Click Next
+
+# Enter database specific properties for the data source
+## URL: jdbc:oracle:thin:@//shplordb0006.nwie.net:1522/edmd  (note: this is the URL for the "thin driver" and it may be more appropriate to use the "thick driver")
+## Data store helper class name: (filled in automatically as "Oracle 11g data store helper")
+## Leave the box checked for "Use this data source in container managed persistence (CMP)"
+## Click Next
+## (I'm not sure which of these are necessary...)
+## Component-managed authentication alias: WritersToolCredentials
+## Mapping-configuration alias: (none)
+## Container-managed authentication alias: WritersToolCredentials
+## Click Next
+## Click Finish
+## Save changes
+
+
+# Put the database drivers on the server
+## ssh into the server using putty then type the following commands
+{code}
+sudo /bin/su - wasadmin
+mkdir drivers
+wget maven.nwie.net/enterprise/com/oracle/ojdbc5/11.1.0.7.0/ojdbc5-11.1.0.7.0.jar
+mv ojdbc5-11.1.0.7.0.jar ojdbc6.jar
+{code}
+
+{warning}
+We've just downloaded the JDBC driver for Oracle 11G from our internal Maven repository, and simply renamed it to what Websphere 8 is expecting.
+There should be a better way of setting up WAS with the Oracle JDBC driver than the above.
+We should probably use the official ojdbc6.jar driver from Oracle: "http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html":http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html
+{warning}
+
+# Test database connection
+## Restart Websphere so that the changes above are applied (run this under your UserID): {code}sudo /etc/init.d/websphere80 restart{code}
+## In the WAS Admin Console, click Resources -> JDBC -> Data sources
+## check the box next to Writers Tool DataSource
+## Click the "Test Connection" button and you should see "The test connection operation for data source Writers Tool DataSource on server dmgr at node ntac1lapvm0024dmgr was successful."
